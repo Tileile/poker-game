@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script>
+        const BACKSIDE_IMG = "{{ backside }}";
+        const HOLD_IMG = "{{ hold_img }}";
+    </script>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+
+    <title>Poker Game</title>
+</head>
+
+<body>
+<div class="wrapper">
+    <header class="page-header">
+        <h1 class="page-title">
+            &nbsp;Poker Game&nbsp;
+        </h1>
+
+
+    </header>
+        <div class="game-info">
+            <h2 id="action-line">  &nbsp;Press Start Game&nbsp;</h2>
+        </div>
+    <main class="page-main">
+
+        <section id="P1">
+
+            <div class="cards">
+                {% for i in range(5) %}
+                <div class="card p1" data-value="{{i}}" data-index="{{i}}" onclick="toggleCard(this)">
+                        <img id="card{{ i }}" class="cardImg" src={{ backside }} alt="">
+                    <img id="hold{{i}}" class="hide hold-img" src={{hold_img}} alt="Overlay Hold Image">
+                    </div>
+                {% endfor %}
+
+            </div>
+                <div class="info">
+                    <div class="player-name">
+                        <h4> P1 </h4>
+                    </div>
+                    <div class="player-info">
+                        <div class="switch-btn">
+                            <button id='switch-btn' data-value="" class='button button-white'> Switch </button>
+                        </div>
+                        <div class="start-btn">
+                            <button id="start-btn" class="button button-white">Start Game</button>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="P2">
+
+        <div class="cards">
+                        {% for i in range(5) %}
+                            <div class="card">
+                                <img id="bot-card{{ i }}" class="cardImg" src={{ backside }} alt="">
+                            </div>
+                        {% endfor %}
+
+        </div>
+            <div class="player-name"> <h4> P2(bot) </h4> </div>
+
+        </section>
+
+        <section id="P3">
+
+        <div class="cards">
+                        {% for i in range(5) %}
+                            <div class="card">
+                                <img id="bot2-card{{ i }}" class="cardImg" src={{ backside }} alt="">
+                            </div>
+                        {% endfor %}
+
+        </div>
+            <div class="player-name"> <h4> P3(bot) </h4> </div>
+
+        </section>
+
+        <section id="P4">
+
+            <div class="cards">
+                        {% for i in range(5) %}
+                            <div class="card">
+                                <img id="bot3-card{{ i }}" class="cardImg" src={{ backside }} alt="">
+                            </div>
+                        {% endfor %}
+
+            </div>
+            <div class="player-name"> <h4> P4(bot) </h4> </div>
+
+        </section>
+
+    </main>
+    <footer class="page-footer">
+        <p> Made by Ilkka Löfman </p>
+    </footer>
+</div>
+
+</body>
+
+</html>
